@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "description" content = "Les conditions météorologiques actuelle dans la ville de votre choix">
+    <title>
+        Skymood - Consultez la météo du jour de nombreuses villes
+    </title>
+    <link rel="stylesheet" href="public/css/style.css" />
+</head>
+<body>
+    <section>
+        <div>
+            <label for = "city">Votre ville</label>
+            <input name = "city" 
+                   type = "text"
+                   id = "city"
+                   placeholder="Exemple: Paris"
+            />
+            <button name = "confirm" id="confirmCity" type = "submit">
+                Rechercher
+            </button>
+            
+            <div id = "errorMessage">
+            
+            </div>
+        </div>
+
+        <div id="current_forecast">
+
+        </div>
+
+        <div id="periodic_forecast">
+            
+        </div>
+    </section>
+
+    <!-- <section>
+            <h1>Ville (PAYS)</h1>
+            <div>
+                <ul>
+                    <li>Mer. 32 sept.</li>
+                    <li>Heure locale: 25:56</li>
+                </ul>
+            </div>
+                <p>
+                    25 °C
+                </p>
+            <div>
+                <img src="http://openweathermap.org/img/wn/01d@2x.png" 
+                alt="">
+            </div>
+            <p>
+                Ensoleillé
+            </p>
+            <p>
+                Blablabla
+            </p>
+    </section> -->
+
+    <script type = "module" src = "public/js/script.js"></script>
+</body>
+</html>
