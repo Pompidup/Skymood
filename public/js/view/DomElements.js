@@ -1,4 +1,4 @@
-import DatetimeConverter from "../utils/DatetimeConverter.js";
+import DatetimeConverter from '../utils/DatetimeConverter.js';
 
 class DomElements {
     
@@ -15,7 +15,7 @@ class DomElements {
         return document.querySelector("#periodic_forecast");
     }
     showError(error){
-        console.log(error);
+        return document.querySelector("#errorMessage").innerHTML = error;
     }
     displayCurrentForecast(currentWeather) {
         console.log(currentWeather);

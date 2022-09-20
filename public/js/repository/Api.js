@@ -12,12 +12,15 @@ class Api {
         try {
             const response = await fetch(`${this.#apiUrl}?q=${city},fra&appid=${this.#apiKey}&units=metric&lang=fr`);
             const datas    = await response.json();
-            console.log(datas);
+            console.log(response);
 
+            if(response.status === 404 ) {
+                return {success: false , error: "Aucun résultats"};
+            }
             return {success: true, error: '', datas: datas};
 
         } catch(error) {
-
+            console.log("error");
             return {success: false , error: error};
         }
     }
