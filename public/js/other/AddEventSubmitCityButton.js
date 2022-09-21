@@ -7,9 +7,17 @@ class AddEventSubmitCityButton {
         const domElements = new DomElements();
         const forecast    = new Forecast();
         const button      = domElements.getSubmitCityButton();
+        const input       = domElements.getCityInput();
         button.addEventListener("click", () => {
             forecast.getCurrentForecastForCity();
-            // userInterface.displayPeriodicWeather();
+            forecast.getPeriodicalForecastForCity();
+        });
+        input.addEventListener("keypress", function(event) {
+            if(event.key === "Enter") {
+                console.log("Touche entrée");
+                forecast.getCurrentForecastForCity();
+                forecast.getPeriodicalForecastForCity();
+            }
         });
     }
 };
