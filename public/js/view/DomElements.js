@@ -82,7 +82,6 @@ class DomElements {
         for(let i = 0; i < arrayPeriodicalWeather.length; i++) {
             const periodicalWeather = arrayPeriodicalWeather[i];
             const time    = new DatetimeConverter(periodicalWeather.getAllTimestamp(), periodicalWeather.getTimezone() ).toLocaleTime();
-            console.log(periodicalWeather);
             const article = `
                                 <article>
                                     <ul>

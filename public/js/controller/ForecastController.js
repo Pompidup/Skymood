@@ -25,13 +25,11 @@ class Forecast {
         const response    = await api.getPeriodicalWeatherForecastByCity(city);
         
         if(response.success) {
-            // console.log(response.datas)
             let arrayPeriodicalWeather = [];
             response.datas.list.map(pw => {
                 const periodicalWeather = new PeriodicalWeather( pw, response.datas.city);
                 arrayPeriodicalWeather.push(periodicalWeather);
             });
-            // console.log(arrayPeriodicalWeather);
             domElements.displayPeriodicalForecast(arrayPeriodicalWeather);
         } else {
             domElements.showError(response.error)

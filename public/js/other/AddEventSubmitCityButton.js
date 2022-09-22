@@ -14,7 +14,6 @@ class AddEventSubmitCityButton {
         });
         input.addEventListener("keypress", function(event) {
             if(event.key === "Enter") {
-                console.log("Touche entrée");
                 forecast.getCurrentForecastForCity();
                 forecast.getPeriodicalForecastForCity();
             }

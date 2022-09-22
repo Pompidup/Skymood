@@ -12,7 +12,7 @@ class Api {
         try {
             const response = await fetch(`${this.#apiUrl}/weather?q=${city},fra&appid=${this.#apiKey}&units=metric&lang=fr`);
             const datas    = await response.json();
-            // console.log(response);
+            console.log(datas);
 
             if(response.status === 404 ) {
                 return {success: false , error: "Aucun résultats"};
@@ -31,7 +31,7 @@ class Api {
             console.log(datas);
 
             if(response.status === 404 ) {
-                return {success: false , error: "Auctun résultats"};
+                return {success: false , error: "Aucun résultats"};
             }
             return {success: true, error: '', datas: datas};
         
