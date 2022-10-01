@@ -1,23 +1,22 @@
-import DomElements from "../view/DomElements.js";
-import Forecast    from '../controller/ForecastController.js';
+import DomElements       from "../view/DomElements.js";
+import GeoCoordinate     from "../controller/GeoCoordinateController.js";
 
 class AddEventSubmitCityButton {
 
     addEventOnClick() {
-        const domElements = new DomElements();
-        const forecast    = new Forecast();
-        const button      = domElements.getSubmitCityButton();
-        const input       = domElements.getCityInput();
+        const domElements   = new DomElements();
+        const geoCoordinate = new GeoCoordinate();
+        const button        = domElements.getSubmitCityButton();
+        const input         = domElements.getCityInput();
         button.addEventListener("click", () => {
-            forecast.getCurrentForecastForCity();
-            forecast.getPeriodicalForecastForCity();
+            geoCoordinate.getGeoCoordinateForCity();
         });
         input.addEventListener("keypress", function(event) {
             if(event.key === "Enter") {
-                forecast.getCurrentForecastForCity();
-                forecast.getPeriodicalForecastForCity();
+                geoCoordinate.getGeoCoordinateForCity();
             }
         });
+
     }
 };
 

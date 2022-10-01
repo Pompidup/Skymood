@@ -1,4 +1,4 @@
-class Api {
+class WeatherApi {
     #apiKey;
     #apiUrl;
 
@@ -7,12 +7,12 @@ class Api {
         this.#apiUrl = "https://api.openweathermap.org/data/2.5"
     }
 
-    async getCurrentWeatherForecastByCity(city) {
+    async getCurrentWeatherForecastByCity(latitude, longitude) {
 
         try {
-            const response = await fetch(`${this.#apiUrl}/weather?q=${city},fra&appid=${this.#apiKey}&units=metric&lang=fr`);
+            const response = await fetch(`${this.#apiUrl}/weather?lat=${latitude}&lon=${longitude},fra&appid=${this.#apiKey}&units=metric&lang=fr`);
             const datas    = await response.json();
-            console.log(datas);
+            // console.log(datas);
 
             if(response.status === 404 ) {
                 return {success: false , error: "Aucun résultats"};
@@ -28,7 +28,7 @@ class Api {
         try {
             const response = await fetch(`${this.#apiUrl}/forecast?q=${city},fra&appid=${this.#apiKey}&units=metric&cnt=8&lang=fr`);
             const datas    = await response.json();
-            console.log(datas);
+            // console.log(datas);
 
             if(response.status === 404 ) {
                 return {success: false , error: "Aucun résultats"};
@@ -41,4 +41,4 @@ class Api {
     }
 }
 
-export default Api;
+export default WeatherApi;
