@@ -10,7 +10,7 @@ class WeatherApi {
     async getCurrentWeatherForecastByCity(latitude, longitude) {
 
         try {
-            const response = await fetch(`${this.#apiUrl}/weather?lat=${latitude}&lon=${longitude},fra&appid=${this.#apiKey}&units=metric&lang=fr`);
+            const response = await fetch(`${this.#apiUrl}/weather?lat=${latitude}&lon=${longitude}&appid=${this.#apiKey}&units=metric&lang=fr`);
             const datas    = await response.json();
             // console.log(datas);
 
@@ -23,10 +23,10 @@ class WeatherApi {
             return {success: false , error: error};
         }
     }
-    async getPeriodicalWeatherForecastByCity(city) {
+    async getPeriodicalWeatherForecastByCity(latitude, longitude) {
 
         try {
-            const response = await fetch(`${this.#apiUrl}/forecast?q=${city},fra&appid=${this.#apiKey}&units=metric&cnt=8&lang=fr`);
+            const response = await fetch(`${this.#apiUrl}/forecast?lat=${latitude}&lon=${longitude}&appid=${this.#apiKey}&units=metric&cnt=8&lang=fr`);
             const datas    = await response.json();
             // console.log(datas);
 
