@@ -1,4 +1,4 @@
-import DomElements       from "./DomElements.js";
+import DomElements       from "../other/DomElements.js";
 import DatetimeConverter from '../utils/DatetimeConverter.js';
 
 class DisplayPeriodicalForecast {
@@ -36,6 +36,11 @@ class DisplayPeriodicalForecast {
                             `;
                 target.innerHTML += article;
         }
+    }
+    displayError(error) {
+        const domElements          = new DomElements();
+        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        spanErrorMessage.innerText = error;
     }
 }
 

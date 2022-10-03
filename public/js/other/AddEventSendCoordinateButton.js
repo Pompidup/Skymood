@@ -1,4 +1,4 @@
-import DomElements from "../view/DomElements.js";
+import DomElements from "./DomElements.js";
 import Forecast    from '../controller/ForecastController.js';
 
 class AddEventSendCoordinateButton {

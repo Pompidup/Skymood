@@ -1,17 +1,17 @@
-import DomElements                  from "../view/DomElements.js";
+import DomElements                  from "../other/DomElements.js";
 import SetCoordinateToButton        from '../other/SetCoordinateToButton.js';
 import AddEventSendCoordinateButton from '../other/AddEventSendCoordinateButton.js';
 
 class DisplayCityGeoCoordinate {
 
     displayGeoCoordinate(arrayGeoCoordinate) {
-        const domElements = new DomElements();
-        const errorMessage = domElements.getSpanForErrorMessage();
+        const domElements      = new DomElements();
+        const errorMessage     = domElements.getSpanForErrorMessage();
         errorMessage.innerText = "";
-        const target      = domElements.getDivForCitySelection();
-        const title       = document.createElement('h1');
-        target.innerHTML  = "";
-        title.innerText   = "Lieux";
+        const target           = domElements.getDivForCitySelection();
+        const title            = document.createElement('h1');
+        target.innerHTML       = "";
+        title.innerText        = "Lieux";
         target.prepend(title);
 
         const existingUl = target.querySelectorAll("ul");
@@ -19,7 +19,7 @@ class DisplayCityGeoCoordinate {
                 existingUl.forEach((ul) => ul.remove());
             }
         
-            const list     = document.createElement('ul');
+        const list     = document.createElement('ul');
         list.className = "city-selection__inner";
         target.append(list);
 
@@ -38,13 +38,18 @@ class DisplayCityGeoCoordinate {
             listItems.addEventListener("click", listItemsEvent.setCityCoordinateToButton);
             list.append(listItems);
         }
-        const button     = document.createElement("button");
+        const button      = document.createElement("button");
         const buttonEvent = new AddEventSendCoordinateButton();
-        button.disabled  = true;
-        button.innerText = "Valider";
+        button.disabled   = true;
+        button.innerText  = "Valider";
         button.className += "button city-selection__button";
         button.addEventListener("click", buttonEvent.sendCoordinateToForecast);
         target.append(button);
+    }
+    displayError(error) {
+        const domElements          = new DomElements();
+        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        spanErrorMessage.innerText = error;
     }
 }
 

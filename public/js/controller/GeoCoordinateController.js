@@ -1,5 +1,5 @@
 import GeoCoordinateApi         from "../repository/GeoCoordinateApi.js";
-import DomElements              from "../view/DomElements.js";
+import DomElements              from "../other/DomElements.js";
 import CityGeoCoordinate        from "../model/CityGeoCoordinate.js";
 import DisplayCityGeoCoordinate from "../view/DisplayCityGeoCoordinate.js";
 
@@ -20,7 +20,7 @@ class GeoCoordinate {
             });
             displayCoordinate.displayGeoCoordinate(arrayGeoCoordinate);
         } else {
-            domElements.showError(response.error)
+            displayCoordinate.displayError(response.error)
         };
     }
 };

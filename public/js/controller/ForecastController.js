@@ -1,5 +1,5 @@
 import WeatherApi                from '../repository/WeatherApi.js';
-import DomElements               from '../view/DomElements.js';
+import DomElements               from '../other/DomElements.js';
 import CurrentWeather            from '../model/CurrentWeather.js';
 import PeriodicalWeather         from '../model/PeriodicalWeather.js';
 import DisplayCurrentForecast    from '../view/DisplayCurrentForecast.js';
@@ -19,16 +19,16 @@ class Forecast {
             const currentWeather = new CurrentWeather(response.datas);
             displayForecast.displayCurrentForecast(currentWeather)
         } else {
-            domElements.showError(response.error)
+            displayForecast.displayError(response.error)
         };
     }
     async getPeriodicalForecastForCity() {
-        const api           = new WeatherApi();
-        const domElements   = new DomElements();
+        const api             = new WeatherApi();
+        const domElements     = new DomElements();
         const displayForecast = new DisplayPeriodicalForecast();
-        const latitude      = domElements.getSendCoordinateButtonLatitude();
-        const longitude     = domElements.getSendCoordinateButtonLongitude();
-        const response      = await api.getPeriodicalWeatherForecastByCity(latitude, longitude);
+        const latitude        = domElements.getSendCoordinateButtonLatitude();
+        const longitude       = domElements.getSendCoordinateButtonLongitude();
+        const response        = await api.getPeriodicalWeatherForecastByCity(latitude, longitude);
         
         if(response.success) {
             let arrayPeriodicalWeather = [];
@@ -38,7 +38,7 @@ class Forecast {
             });
             displayForecast.displayPeriodicalForecast(arrayPeriodicalWeather);
         } else {
-            domElements.showError(response.error)
+            displayForecast.displayError(response.error)
         };
     }
 }

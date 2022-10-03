@@ -34,9 +34,6 @@ class DomElements {
     getSpanForErrorMessage() {
         return document.querySelector("#errorMessage");
     }
-    showError(error){
-        return document.querySelector("#errorMessage").innerText = error;
-    }
 }
 
 export default DomElements;

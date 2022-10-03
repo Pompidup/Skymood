@@ -1,4 +1,4 @@
-import DomElements       from "./DomElements.js";
+import DomElements       from "../other/DomElements.js";
 import DatetimeConverter from '../utils/DatetimeConverter.js';
 
 class DisplayCurrentForecast {
@@ -53,6 +53,11 @@ class DisplayCurrentForecast {
                             </ul>
                             </div>
                         `;
+    }
+    displayError(error) {
+        const domElements          = new DomElements();
+        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        spanErrorMessage.innerText = error;
     }
 }
 

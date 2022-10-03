@@ -1,4 +1,4 @@
-import DomElements       from "../view/DomElements.js";
+import DomElements       from "./DomElements.js";
 import GeoCoordinate     from "../controller/GeoCoordinateController.js";
 
 class AddEventSubmitCityButton {
