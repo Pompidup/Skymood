@@ -5,36 +5,38 @@ class DisplayPeriodicalForecast {
     
     displayPeriodicalForecast(arrayPeriodicalWeather) {
         const domElements = new DomElements();
-        const target = domElements.getDivForPeriodicalForecast();
-        const h2 = `
-                    <h2>
-                        Prochaines heures
-                    </h2>
-                    `;
-        target.innerHTML = h2;
+        const section     = domElements.getSectionForPeriodicalForecast();
+        const title       = document.createElement('h2');
+        title.innerText   = "Prochaines heures";
+        section.prepend(title);
+        
         for(let i = 0; i < arrayPeriodicalWeather.length; i++) {
             const periodicalWeather = arrayPeriodicalWeather[i];
-            const time    = new DatetimeConverter(periodicalWeather.getAllTimestamp(), periodicalWeather.getTimezone() ).toLocaleTime();
-            const article = `
-                                <article>
-                                    <ul>
-                                        <li>
-                                            ${time}
-                                        </li>
-                                        <li>
-                                            <img src="http://openweathermap.org/img/wn/${periodicalWeather.getWeatherIcons()}.png" 
-                                                alt="${periodicalWeather.getDescriptions()}">
-                                        </li>
-                                        <li>
-                                            ${periodicalWeather.getTemperatures()} °C
-                                        </li>
-                                        <li>
-                                            ${periodicalWeather.getWindSpeed()} km/h
-                                        </li>
-                                    </ul>
-                                </article>
-                            `;
-                target.innerHTML += article;
+            const time     = new DatetimeConverter(periodicalWeather.getAllTimestamp(), periodicalWeather.getTimezone() ).toLocaleTime();
+            const list     = document.createElement('ul');
+            const listTime = document.createElement('li');
+            const listImg  = document.createElement('li');
+            const listTemp = document.createElement('li');
+            const listWind = document.createElement('li');
+            const img      = document.createElement('img');
+            
+            listTime.innerHTML = `
+                                    ${time}
+                                `;
+            img.src = `http://openweathermap.org/img/wn/${periodicalWeather.getWeatherIcons()}.png`;
+            img.alt = `${periodicalWeather.getDescriptions()}`;
+            listTemp.innerHTML = `
+                                    ${periodicalWeather.getTemperatures()} °C
+                                `;
+            listWind.innerHTML += `
+                                    ${periodicalWeather.getWindSpeed()} km/h
+                                `;
+            list.append(listTime);
+            listImg.append(img);
+            list.append(listImg);
+            list.append(listTemp);
+            list.append(listWind);
+            section.append(list);
         }
     }
     displayError(error) {

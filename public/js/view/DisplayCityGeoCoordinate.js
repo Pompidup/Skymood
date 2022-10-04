@@ -1,6 +1,6 @@
-import DomElements                  from "../other/DomElements.js";
-import SetCoordinateToButton        from '../other/SetCoordinateToButton.js';
-import AddEventSendCoordinateButton from '../other/AddEventSendCoordinateButton.js';
+import DomElements           from "../other/DomElements.js";
+import SetCoordinateToButton from '../other/SetCoordinateToButton.js';
+import SendCoordinate        from '../other/SendCoordinateToForecast.js';
 
 class DisplayCityGeoCoordinate {
 
@@ -8,11 +8,11 @@ class DisplayCityGeoCoordinate {
         const domElements      = new DomElements();
         const errorMessage     = domElements.getSpanForErrorMessage();
         errorMessage.innerText = "";
-        const target           = domElements.getDivForCitySelection();
-        const title            = document.createElement('h1');
+        const target           = domElements.getSectionForCitySelection();
+        // const title            = document.createElement('h1');
         target.innerHTML       = "";
-        title.innerText        = "Lieux";
-        target.prepend(title);
+        // title.innerText        = "Lieux";
+        // target.prepend(title);
 
         const existingUl = target.querySelectorAll("ul");
             if (existingUl.length > 0) {
@@ -29,9 +29,9 @@ class DisplayCityGeoCoordinate {
             const listItemsEvent = new SetCoordinateToButton();
             listItems.innerHTML  = `
                                 ${geoCoordinate.getCity()},
-                                ${geoCoordinate.getCountry()},
+                                ${geoCoordinate.getCountry()} 
                                 ${geoCoordinate.getState()}
-            `;
+                            `;
             listItems.dataset.latitude  = geoCoordinate.getLatitude();
             listItems.dataset.longitude = geoCoordinate.getLongitude();
             listItems.className         = "city-selection__items";
@@ -39,7 +39,7 @@ class DisplayCityGeoCoordinate {
             list.append(listItems);
         }
         const button      = document.createElement("button");
-        const buttonEvent = new AddEventSendCoordinateButton();
+        const buttonEvent = new SendCoordinate();
         button.disabled   = true;
         button.innerText  = "Valider";
         button.className += "button city-selection__button";

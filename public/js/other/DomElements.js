@@ -22,14 +22,14 @@ class DomElements {
     getCityInputValue() {
         return document.querySelector("#city").value;
     }
-    getDivForCitySelection() {
+    getSectionForCitySelection() {
         return document.querySelector('#citySelection');
     }
-    getDivForCurrentForecast() {
-        return document.querySelector("#current_forecast");
+    getSectionForCurrentForecast() {
+        return document.querySelector("#currentForecast");
     }
-    getDivForPeriodicalForecast() {
-        return document.querySelector("#periodical_forecast");
+    getSectionForPeriodicalForecast() {
+        return document.querySelector("#periodicalForecast");
     }
     getSpanForErrorMessage() {
         return document.querySelector("#errorMessage");

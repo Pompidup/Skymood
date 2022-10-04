@@ -9,7 +9,9 @@ class DisplayCurrentForecast {
         const time        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
         const sunrise     = new DatetimeConverter(currentWeather.getSunriseTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
         const sunset      = new DatetimeConverter(currentWeather.getSunsetTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
-        const target      = domElements.getDivForCurrentForecast();
+        const target      = domElements.getSectionForCurrentForecast();
+        const geoCoordTarget     = domElements.getSectionForCitySelection();
+        geoCoordTarget.innerHTML = "";
 
         target.innerHTML  = `
                             <h1>${currentWeather.getCityName()} (${currentWeather.getCountryName()})</h1>
