@@ -9,52 +9,78 @@ class DisplayCurrentForecast {
         const time        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
         const sunrise     = new DatetimeConverter(currentWeather.getSunriseTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
         const sunset      = new DatetimeConverter(currentWeather.getSunsetTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
-        const target      = domElements.getSectionForCurrentForecast();
         const geoCoordTarget     = domElements.getSectionForCitySelection();
         geoCoordTarget.innerHTML = "";
 
-        target.innerHTML  = `
-                            <h1>${currentWeather.getCityName()} (${currentWeather.getCountryName()})</h1>
-                            <div>
-                                <p>Date et heure locale</p>
-                                <ul>
-                                    <li>${date}</li>
-                                    <li>Heure locale: ${time}</li>
-                                </ul>
-                            </div>
-                            <p>
-                                ${currentWeather.getTemperature()} °C
-                            </p>
+        const section       = domElements.getSectionForCurrentForecast();
+        const title         = document.createElement('h1');
+        const listDateTime  = document.createElement('ul');
+        const itemDate      = document.createElement('li');
+        const itemTime      = document.createElement('li');
+        const listSkyInfos  = document.createElement('ul');
+        const itemTemp      = document.createElement('li');
+        const itemImg       = document.createElement('li');
+        const img           = document.createElement('img');
+        const itemDescr     = document.createElement('li');
+        const listOthers    = document.createElement('ul');
+        const itemHumidity  = document.createElement('li');
+        const itemWind      = document.createElement('li');
+        const itemSunrise   = document.createElement('li');
+        const itemSunset    = document.createElement('li');
+        const itemFeelTemp  = document.createElement('li');
 
-                            <div>
-                            <img src="http://openweathermap.org/img/wn/${currentWeather.getWeatherIcon()}@2x.png" 
-                                alt="${currentWeather.getDescription()}">
-                            </div>
+        title.innerHTML = `
+                            ${currentWeather.getCityName()} (${currentWeather.getCountryName()})
+        `;
+        itemDate.innerHTML = `
+                            Date: ${date}
+        `;
+        itemTime.innerHTML = `
+                            Heure locale: ${time}
+        `;
+        itemTemp.innerHTML = `
+                            ${currentWeather.getTemperature()} °C
+        `;
+        img.src = `
+                    http://openweathermap.org/img/wn/${currentWeather.getWeatherIcon()}@2x.png
+        `;
+        img.alt = `
+                    ${currentWeather.getDescription()}
+        `;
+        itemDescr.innerHTML = `
+                            ${currentWeather.getDescription()}
+        `;
+        itemHumidity.innerHTML = `
+                                Humidité: ${currentWeather.getHumidity()}%
+        `;
+        itemWind.innerHTML = `
+                            Vent: ${currentWeather.getWindSpeed()} km/h
+        `;
+        itemSunrise.innerHTML = `
+                                Lever: ${sunrise}
+        `;
+        itemSunset.innerHTML = `
+                                Coucher: ${sunset}
+        `;
+        itemFeelTemp.innerHTML = `
+                                Ressenti: ${currentWeather.getFeelTemperature()} °C
+        `;
+    section.prepend(title);
+    section.append(listDateTime);
+    listDateTime.append(itemDate);
+    listDateTime.append(itemTime);
+    section.append(listSkyInfos);
+    listSkyInfos.append(itemTemp);
+    itemImg.append(img);
+    listSkyInfos.append(itemImg);
+    listSkyInfos.append(itemDescr);
+    section.append(listOthers);
+    listOthers.append(itemHumidity);
+    listOthers.append(itemWind);
+    listOthers.append(itemSunrise);
+    listOthers.append(itemSunset);
+    listOthers.append(itemFeelTemp);
 
-                            <p>
-                                ${currentWeather.getDescription()}
-                            </p>
-
-                            <div>
-                            <ul>
-                                <li>
-                                    Humidité: ${currentWeather.getHumidity()}%
-                                </li>
-                                <li>
-                                    Vent: ${currentWeather.getWindSpeed()} km/h
-                                </li>
-                                <li>
-                                    Lever: ${sunrise}
-                                </li>
-                                <li>
-                                    Coucher: ${sunset}
-                                </li>
-                                <li>
-                                    Ressenti: ${currentWeather.getFeelTemperature()} °C
-                                </li>
-                            </ul>
-                            </div>
-                        `;
     }
     displayError(error) {
         const domElements          = new DomElements();

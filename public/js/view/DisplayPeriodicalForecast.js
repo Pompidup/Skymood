@@ -23,20 +23,24 @@ class DisplayPeriodicalForecast {
             listTime.innerHTML = `
                                     ${time}
                                 `;
-            img.src = `http://openweathermap.org/img/wn/${periodicalWeather.getWeatherIcons()}.png`;
-            img.alt = `${periodicalWeather.getDescriptions()}`;
+            img.src = `
+                        http://openweathermap.org/img/wn/${periodicalWeather.getWeatherIcons()}.png
+                    `;
+            img.alt = `
+                        ${periodicalWeather.getDescriptions()}
+                    `;
             listTemp.innerHTML = `
                                     ${periodicalWeather.getTemperatures()} °C
                                 `;
-            listWind.innerHTML += `
+            listWind.innerHTML = `
                                     ${periodicalWeather.getWindSpeed()} km/h
                                 `;
+            section.append(list);
             list.append(listTime);
             listImg.append(img);
             list.append(listImg);
             list.append(listTemp);
             list.append(listWind);
-            section.append(list);
         }
     }
     displayError(error) {

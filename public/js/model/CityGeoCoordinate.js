@@ -1,14 +1,14 @@
 class CityGeoCoordinate {
     #city;
     #country;
-    #state;
+    #county;
     #latitude;
     #longitude;
 
     constructor(datas) {
         this.#city      = datas.city;
         this.#country   = datas.country;
-        this.#state     = datas.state;
+        this.#county     = datas.county;
         this.#latitude  = datas.lat;
         this.#longitude = datas.lon;
     }
@@ -18,8 +18,8 @@ class CityGeoCoordinate {
     getCountry() {
         return this.#country;
     }
-    getState() {
-        return this.#state;
+    getCounty() {
+        return this.#county;
     }
     getLatitude() {
         return this.#latitude;

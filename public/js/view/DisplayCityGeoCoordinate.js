@@ -29,8 +29,8 @@ class DisplayCityGeoCoordinate {
             const listItemsEvent = new SetCoordinateToButton();
             listItems.innerHTML  = `
                                 ${geoCoordinate.getCity()},
-                                ${geoCoordinate.getCountry()} 
-                                ${geoCoordinate.getState()}
+                                ${geoCoordinate.getCounty()} 
+                                ${geoCoordinate.getCountry()}
                             `;
             listItems.dataset.latitude  = geoCoordinate.getLatitude();
             listItems.dataset.longitude = geoCoordinate.getLongitude();
