@@ -3,7 +3,7 @@ import DatetimeConverter from '../utils/DatetimeConverter.js';
 
 class DisplayCurrentForecast {
 
-    displayCurrentForecast(currentWeather, city, countryCode) {
+    displayCurrentForecast(currentWeather, city, countryCode, countryImg) {
         const domElements = new DomElements();
         const date        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleDate();
         const time        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
@@ -13,7 +13,11 @@ class DisplayCurrentForecast {
         geoCoordTarget.innerHTML = "";
 
         const section       = domElements.getSectionForCurrentForecast();
-        const title         = document.createElement('h1');
+        const listLocation  = document.createElement('ul');
+        const itemCity      = document.createElement('li');
+        const itemCountry   = document.createElement('li');
+        const itemFlag      = document.createElement('li');
+        const flag          = document.createElement('img');
         const listDateTime  = document.createElement('ul');
         const itemDate      = document.createElement('li');
         const itemTime      = document.createElement('li');
@@ -31,8 +35,14 @@ class DisplayCurrentForecast {
 
         section.innerHTML = "";
 
-        title.innerHTML = `
-                            ${city} (${countryCode})
+        itemCity.innerHTML = `
+                            ${city}
+        `;
+        itemCountry.innerHTML = `
+                            ${countryCode}
+        `;
+        flag.src = `
+                    ${countryImg}
         `;
         itemDate.innerHTML = `
                             Date: ${date}
@@ -68,7 +78,11 @@ class DisplayCurrentForecast {
                                 Ressenti: ${currentWeather.getFeelTemperature()} °C
         `;
 
-    section.prepend(title);
+    section.append(listLocation);
+    listLocation.append(itemCity);
+    listLocation.append(itemCountry);
+    itemFlag.append(flag);
+    listLocation.append(itemFlag);
     section.append(listDateTime);
     listDateTime.append(itemDate);
     listDateTime.append(itemTime);
