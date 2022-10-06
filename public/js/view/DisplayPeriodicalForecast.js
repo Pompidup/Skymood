@@ -7,6 +7,7 @@ class DisplayPeriodicalForecast {
         const domElements = new DomElements();
         const section     = domElements.getSectionForPeriodicalForecast();
         const title       = document.createElement('h2');
+        section.innerHTML = "";
         title.innerText   = "Prochaines heures";
         section.prepend(title);
         

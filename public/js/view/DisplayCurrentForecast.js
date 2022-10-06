@@ -3,7 +3,7 @@ import DatetimeConverter from '../utils/DatetimeConverter.js';
 
 class DisplayCurrentForecast {
 
-    displayCurrentForecast(currentWeather) {
+    displayCurrentForecast(currentWeather, city, countryCode) {
         const domElements = new DomElements();
         const date        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleDate();
         const time        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
@@ -29,8 +29,10 @@ class DisplayCurrentForecast {
         const itemSunset    = document.createElement('li');
         const itemFeelTemp  = document.createElement('li');
 
+        section.innerHTML = "";
+
         title.innerHTML = `
-                            ${currentWeather.getCityName()} (${currentWeather.getCountryName()})
+                            ${city} (${countryCode})
         `;
         itemDate.innerHTML = `
                             Date: ${date}
@@ -54,7 +56,7 @@ class DisplayCurrentForecast {
                                 Humidité: ${currentWeather.getHumidity()}%
         `;
         itemWind.innerHTML = `
-                            Vent: ${currentWeather.getWindSpeed()} km/h
+                                Vent: ${currentWeather.getWindSpeed()} km/h
         `;
         itemSunrise.innerHTML = `
                                 Lever: ${sunrise}
@@ -65,6 +67,7 @@ class DisplayCurrentForecast {
         itemFeelTemp.innerHTML = `
                                 Ressenti: ${currentWeather.getFeelTemperature()} °C
         `;
+
     section.prepend(title);
     section.append(listDateTime);
     listDateTime.append(itemDate);
@@ -75,11 +78,11 @@ class DisplayCurrentForecast {
     listSkyInfos.append(itemImg);
     listSkyInfos.append(itemDescr);
     section.append(listOthers);
-    listOthers.append(itemHumidity);
-    listOthers.append(itemWind);
-    listOthers.append(itemSunrise);
-    listOthers.append(itemSunset);
-    listOthers.append(itemFeelTemp);
+    listOthers.append();
+    listOthers.append();
+    listOthers.append();
+    listOthers.append();
+    listOthers.append();
 
     }
     displayError(error) {

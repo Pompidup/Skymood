@@ -11,13 +11,15 @@ class Forecast {
         const api             = new WeatherApi();
         const domElements     = new DomElements();
         const displayForecast = new DisplayCurrentForecast();
-        const latitude        = domElements.getSendCoordinateButtonLatitude();
-        const longitude       = domElements.getSendCoordinateButtonLongitude();
+        const latitude        = domElements.getDataAttributeLatitude();
+        const longitude       = domElements.getDataAttributeLongitude();
+        const city            = domElements.getDataAttributeCity();
+        const countryCode     = domElements.getDataAttributeCountryCode();
         const response        = await api.getCurrentWeatherForecastByCity(latitude, longitude);
 
         if(response.success) {
             const currentWeather = new CurrentWeather(response.datas);
-            displayForecast.displayCurrentForecast(currentWeather)
+            displayForecast.displayCurrentForecast(currentWeather, city, countryCode)
         } else {
             displayForecast.displayError(response.error)
         };
@@ -26,8 +28,8 @@ class Forecast {
         const api             = new WeatherApi();
         const domElements     = new DomElements();
         const displayForecast = new DisplayPeriodicalForecast();
-        const latitude        = domElements.getSendCoordinateButtonLatitude();
-        const longitude       = domElements.getSendCoordinateButtonLongitude();
+        const latitude        = domElements.getDataAttributeLatitude();
+        const longitude       = domElements.getDataAttributeLongitude();
         const response        = await api.getPeriodicalWeatherForecastByCity(latitude, longitude);
         
         if(response.success) {

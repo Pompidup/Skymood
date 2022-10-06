@@ -12,7 +12,7 @@ class WeatherApi {
         try {
             const response = await fetch(`${this.#apiUrl}/weather?lat=${latitude}&lon=${longitude}&appid=${this.#apiKey}&units=metric&lang=fr`);
             const datas    = await response.json();
-            // console.log(datas);
+            console.log(datas);
 
             if(response.status === 404 ) {
                 return {success: false , error: "Aucun résultats"};

@@ -4,13 +4,19 @@ class CityGeoCoordinate {
     #county;
     #latitude;
     #longitude;
+    #address;
+    #location;
+    #ISOcode;
 
     constructor(datas) {
         this.#city      = datas.city;
         this.#country   = datas.country;
-        this.#county     = datas.county;
+        this.#county    = datas.county;
         this.#latitude  = datas.lat;
         this.#longitude = datas.lon;
+        this.#address   = datas.formatted;
+        this.#location  = datas.address_line1;
+        this.#ISOcode   = datas.country_code;
     }
     getCity() {
         return this.#city;
@@ -26,6 +32,15 @@ class CityGeoCoordinate {
     }
     getLongitude() {
         return this.#longitude;
+    }
+    getFormattedAddress() {
+        return this.#address;
+    }
+    getLocation() {
+        return this.#location;
+    }
+    getCountryCode() {
+        return this.#ISOcode;
     }
 };
 

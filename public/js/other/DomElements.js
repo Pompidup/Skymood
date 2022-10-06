@@ -6,15 +6,25 @@ class DomElements {
     getSendCoordinateButton() {
         return document.querySelector(".city-selection__button");
     }
-    getSendCoordinateButtonLatitude() {
+    getDataAttributeLatitude() {
         const button = this.getSendCoordinateButton();
         
         return button.dataset.latitude; 
     }
-    getSendCoordinateButtonLongitude() {
+    getDataAttributeLongitude() {
         const button = this.getSendCoordinateButton();
         
         return button.dataset.longitude; 
+    }
+    getDataAttributeCity() {
+        const button = this.getSendCoordinateButton();
+
+        return button.dataset.city;
+    }
+    getDataAttributeCountryCode() {
+        const button = this.getSendCoordinateButton();
+
+        return button.dataset.cntycode;
     }
     getCityInput() {
         return document.querySelector('#city');

@@ -7,12 +7,9 @@ class DisplayCityGeoCoordinate {
     displayGeoCoordinate(arrayGeoCoordinate) {
         const domElements      = new DomElements();
         const errorMessage     = domElements.getSpanForErrorMessage();
-        errorMessage.innerText = "";
         const target           = domElements.getSectionForCitySelection();
-        // const title            = document.createElement('h1');
+        errorMessage.innerText = "";
         target.innerHTML       = "";
-        // title.innerText        = "Lieux";
-        // target.prepend(title);
 
         const existingUl = target.querySelectorAll("ul");
             if (existingUl.length > 0) {
@@ -28,12 +25,12 @@ class DisplayCityGeoCoordinate {
             const listItems      = document.createElement("li");
             const listItemsEvent = new SetCoordinateToButton();
             listItems.innerHTML  = `
-                                ${geoCoordinate.getCity()},
-                                ${geoCoordinate.getCounty()} 
-                                ${geoCoordinate.getCountry()}
+                                ${geoCoordinate.getFormattedAddress()}
                             `;
             listItems.dataset.latitude  = geoCoordinate.getLatitude();
             listItems.dataset.longitude = geoCoordinate.getLongitude();
+            listItems.dataset.city      = geoCoordinate.getLocation();
+            listItems.dataset.cntycode  = geoCoordinate.getCountryCode();
             listItems.className         = "city-selection__items";
             listItems.addEventListener("click", listItemsEvent.setCityCoordinateToButton);
             list.append(listItems);
@@ -48,7 +45,9 @@ class DisplayCityGeoCoordinate {
     }
     displayError(error) {
         const domElements          = new DomElements();
+        const section              = domElements.getSectionForCitySelection()
         const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        section.innerHTML = "";
         spanErrorMessage.innerText = error;
     }
 }
