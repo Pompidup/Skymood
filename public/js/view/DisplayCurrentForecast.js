@@ -3,7 +3,8 @@ import DatetimeConverter from '../utils/DatetimeConverter.js';
 
 class DisplayCurrentForecast {
 
-    displayCurrentForecast(currentWeather, city, countryCode, countryImg) {
+    displayCurrentForecast(currentWeather, city, countryCode, countryFlag) {
+        console.log(countryFlag);
         const domElements = new DomElements();
         const date        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleDate();
         const time        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
@@ -42,7 +43,7 @@ class DisplayCurrentForecast {
                             ${countryCode}
         `;
         flag.src = `
-                    ${countryImg}
+                ${countryFlag}
         `;
         itemDate.innerHTML = `
                             Date: ${date}

@@ -3,6 +3,7 @@ import DomElements              from "../other/DomElements.js";
 import CityGeoCoordinate        from "../model/CityGeoCoordinate.js";
 import DisplayCityGeoCoordinate from "../view/DisplayCityGeoCoordinate.js";
 import SessionStorage           from "../utils/SessionStorage.js";
+import CreatePathForFlag         from '../other/CreatePathForFlag.js';
 
 class GeoCoordinate {
     
@@ -11,8 +12,10 @@ class GeoCoordinate {
         const domElements       = new DomElements();
         const displayCoordinate = new DisplayCityGeoCoordinate();
         const sessionStorage    = new SessionStorage();
+        // const flagPath          = new CreatePathForFlag();
         const city              = domElements.getCityInputValue()
         const cityStored        = sessionStorage.getCity();
+        // const countryFlag       = flagPath.createPath();
 
         if( city !== cityStored ){
             const response = await api.getCoordinateByCity(city);

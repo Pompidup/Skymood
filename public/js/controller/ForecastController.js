@@ -4,7 +4,7 @@ import CurrentWeather            from '../model/CurrentWeather.js';
 import PeriodicalWeather         from '../model/PeriodicalWeather.js';
 import DisplayCurrentForecast    from '../view/DisplayCurrentForecast.js';
 import DisplayPeriodicalForecast from '../view/DisplayPeriodicalForecast.js';
-import FlagByCountry             from '../utils/FlagByCountry.js';
+import CreatePathForFlag         from '../other/CreatePathForFlag.js';
 
 class Forecast {
 
@@ -12,17 +12,17 @@ class Forecast {
         const api             = new WeatherApi();
         const domElements     = new DomElements();
         const displayForecast = new DisplayCurrentForecast();
-        const countryFlag     = new FlagByCountry();
+        const flagPath        = new CreatePathForFlag();
         const latitude        = domElements.getDataAttributeLatitude();
         const longitude       = domElements.getDataAttributeLongitude();
         const city            = domElements.getDataAttributeCity();
         const countryCode     = domElements.getDataAttributeCountryCode();
-        const countryImg      = countryFlag.displayFlagForEachCountry();
+        const countryFlag     = flagPath.createPath();
         const response        = await api.getCurrentWeatherForecastByCity(latitude, longitude);
 
         if(response.success) {
             const currentWeather = new CurrentWeather(response.datas);
-            displayForecast.displayCurrentForecast(currentWeather, city, countryCode, countryImg)
+            displayForecast.displayCurrentForecast(currentWeather, city, countryCode, countryFlag)
         } else {
             displayForecast.displayError(response.error)
         };

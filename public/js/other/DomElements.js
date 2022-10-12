@@ -24,7 +24,7 @@ class DomElements {
     getDataAttributeCountryCode() {
         const button = this.getSendCoordinateButton();
 
-        return button.dataset.cntycode;
+        return button.dataset.cntycode.toUpperCase();
     }
     getCityInput() {
         return document.querySelector('#city');
