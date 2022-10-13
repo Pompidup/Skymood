@@ -12,20 +12,23 @@ class GeoCoordinate {
         const domElements       = new DomElements();
         const displayCoordinate = new DisplayCityGeoCoordinate();
         const sessionStorage    = new SessionStorage();
-        // const flagPath          = new CreatePathForFlag();
+        const flagPath          = new CreatePathForFlag();
+
         const city              = domElements.getCityInputValue()
         const cityStored        = sessionStorage.getCity();
-        // const countryFlag       = flagPath.createPath();
 
         if( city !== cityStored ){
             const response = await api.getCoordinateByCity(city);
             if(response.success) {
                 let arrayGeoCoordinate = [];
+                let arrayIso           = [];
                 response.datas.results.map( gc => {
                     const geoCoordinate = new CityGeoCoordinate( gc );
                     arrayGeoCoordinate.push(geoCoordinate);
+                    arrayIso.push(geoCoordinate.getCountryCode());
                 });
-                displayCoordinate.displayGeoCoordinate(arrayGeoCoordinate);
+                const countryFlag = flagPath.createPath(arrayIso);
+                displayCoordinate.displayGeoCoordinate(arrayGeoCoordinate, countryFlag);
                 sessionStorage.setCity(city);
             } else {
                 displayCoordinate.displayError(response.error)
