@@ -5,7 +5,7 @@ class DisplayPeriodicalForecast {
     
     displayPeriodicalForecast(arrayPeriodicalWeather) {
         const domElements = new DomElements();
-        const section     = domElements.getSectionForPeriodicalForecast();
+        const section     = domElements.getBySelector("#periodicalForecast");
         const title       = document.createElement('h2');
         section.innerHTML = "";
         title.innerText   = "Prochaines heures";
@@ -46,7 +46,7 @@ class DisplayPeriodicalForecast {
     }
     displayError(error) {
         const domElements          = new DomElements();
-        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        const spanErrorMessage     = domElements.getBySelector("#errorMessage");
         spanErrorMessage.innerText = error;
     }
 }

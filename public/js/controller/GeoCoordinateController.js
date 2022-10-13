@@ -14,7 +14,7 @@ class GeoCoordinate {
         const sessionStorage    = new SessionStorage();
         const flagPath          = new CreatePathForFlag();
 
-        const city              = domElements.getCityInputValue()
+        const city              = domElements.getBySelector("#city").value;
         const cityStored        = sessionStorage.getCity();
 
         if( city !== cityStored ){

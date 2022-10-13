@@ -15,16 +15,18 @@ class Forecast {
         const displayForecast = new DisplayCurrentForecast();
         const flagPath = new CreatePathForFlag();
 
-        const latitude = domElements.getDataAttributeLatitude();
-        const longitude = domElements.getDataAttributeLongitude();
-        const city = domElements.getDataAttributeCity();
-        const countryCode = domElements.getDataAttributeCountryCode();
+        const citySelectionButton = domElements.getBySelector(".city-selection__button");
+
+        const latitude = domElements.getDataAttribute("latitude", citySelectionButton);
+        const longitude = domElements.getDataAttribute("longitude", citySelectionButton);
+        const city = domElements.getDataAttribute("city", citySelectionButton);
+        const countryCode = domElements.getDataAttribute("cntycode", citySelectionButton);
         const countryFlag = flagPath.createPath([countryCode]);
         const response = await api.getCurrentWeatherForecastByCity(latitude, longitude);
 
         if (response.success) {
             const currentWeather = new CurrentWeather(response.datas);
-            displayForecast.displayCurrentForecast(currentWeather, city, countryCode[0], countryFlag[0])
+            displayForecast.displayCurrentForecast(currentWeather, city, countryCode, countryFlag[0])
         } else {
             displayForecast.displayError(response.error)
         };
@@ -34,8 +36,10 @@ class Forecast {
         const domElements = new DomElements();
         const displayForecast = new DisplayPeriodicalForecast();
 
-        const latitude = domElements.getDataAttributeLatitude();
-        const longitude = domElements.getDataAttributeLongitude();
+        const citySelectionButton = domElements.getBySelector(".city-selection__button");
+
+        const latitude = domElements.getDataAttribute("latitude", citySelectionButton);
+        const longitude = domElements.getDataAttribute("longitude", citySelectionButton);
         const response = await api.getPeriodicalWeatherForecastByCity(latitude, longitude);
 
         if (response.success) {
