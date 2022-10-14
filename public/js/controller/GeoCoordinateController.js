@@ -3,7 +3,7 @@ import DomElements              from "../other/DomElements.js";
 import CityGeoCoordinate        from "../model/CityGeoCoordinate.js";
 import DisplayCityGeoCoordinate from "../view/DisplayCityGeoCoordinate.js";
 import SessionStorage           from "../utils/SessionStorage.js";
-import CreatePathForFlag         from '../other/CreatePathForFlag.js';
+import CreatePathForFlag        from '../other/CreatePathForFlag.js';
 
 class GeoCoordinate {
     
@@ -14,7 +14,7 @@ class GeoCoordinate {
         const sessionStorage    = new SessionStorage();
         const flagPath          = new CreatePathForFlag();
 
-        const city              = domElements.getCityInputValue()
+        const city              = domElements.getBySelector("#city").value;
         const cityStored        = sessionStorage.getCity();
 
         if( city !== cityStored ){
@@ -22,12 +22,15 @@ class GeoCoordinate {
             if(response.success) {
                 let arrayGeoCoordinate = [];
                 let arrayIso           = [];
+                
                 response.datas.results.map( gc => {
                     const geoCoordinate = new CityGeoCoordinate( gc );
+                    
                     arrayGeoCoordinate.push(geoCoordinate);
                     arrayIso.push(geoCoordinate.getCountryCode());
                 });
                 const countryFlag = flagPath.createPath(arrayIso);
+                
                 displayCoordinate.displayGeoCoordinate(arrayGeoCoordinate, countryFlag);
                 sessionStorage.setCity(city);
             } else {

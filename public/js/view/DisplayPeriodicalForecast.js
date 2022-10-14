@@ -5,11 +5,11 @@ class DisplayPeriodicalForecast {
     
     displayPeriodicalForecast(arrayPeriodicalWeather) {
         const domElements = new DomElements();
-        const section     = domElements.getSectionForPeriodicalForecast();
-        const title       = document.createElement('h2');
-        section.innerHTML = "";
-        title.innerText   = "Prochaines heures";
-        section.prepend(title);
+        const section     = domElements.getBySelector("#periodicalForecast");
+        // const title       = document.createElement('h2');
+        // section.innerHTML = "";
+        // title.innerText   = "Prochaines heures";
+        // section.prepend(title);
         
         for(let i = 0; i < arrayPeriodicalWeather.length; i++) {
             const periodicalWeather = arrayPeriodicalWeather[i];
@@ -46,7 +46,7 @@ class DisplayPeriodicalForecast {
     }
     displayError(error) {
         const domElements          = new DomElements();
-        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        const spanErrorMessage     = domElements.getBySelector("#errorMessage");
         spanErrorMessage.innerText = error;
     }
 }

@@ -9,10 +9,10 @@ class DisplayCurrentForecast {
         const time        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
         const sunrise     = new DatetimeConverter(currentWeather.getSunriseTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
         const sunset      = new DatetimeConverter(currentWeather.getSunsetTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
-        const geoCoordTarget     = domElements.getSectionForCitySelection();
+        const geoCoordTarget     = domElements.getBySelector('#citySelection');
         geoCoordTarget.innerHTML = "";
 
-        const section       = domElements.getSectionForCurrentForecast();
+        const section       = domElements.getBySelector("#currentForecast");
         const listLocation  = document.createElement('ul');
         const itemCity      = document.createElement('li');
         const itemCountry   = document.createElement('li');
@@ -35,51 +35,54 @@ class DisplayCurrentForecast {
 
         section.innerHTML = "";
 
-        itemCity.innerHTML = `
-                            ${city}
-        `;
-        itemCountry.innerHTML = `
-                            ${countryCode}
-        `;
-        flag.src = `
-                ${countryFlag}
-        `;
-        flag.alt = `
-                Drapeau du pays (${countryCode})
-        `;
-        itemDate.innerHTML = `
-                            Date: ${date}
-        `;
-        itemTime.innerHTML = `
-                            Heure locale: ${time}
-        `;
-        itemTemp.innerHTML = `
-                            ${currentWeather.getTemperature()} °C
-        `;
-        img.src = `
-                    http://openweathermap.org/img/wn/${currentWeather.getWeatherIcon()}@2x.png
-        `;
-        img.alt = `
-                    ${currentWeather.getDescription()}
-        `;
-        itemDescr.innerHTML = `
-                            ${currentWeather.getDescription()}
-        `;
-        itemHumidity.innerHTML = `
-                                Humidité: ${currentWeather.getHumidity()}%
-        `;
-        itemWind.innerHTML = `
-                                Vent: ${currentWeather.getWindSpeed()} km/h
-        `;
-        itemSunrise.innerHTML = `
-                                Lever: ${sunrise}
-        `;
-        itemSunset.innerHTML = `
-                                Coucher: ${sunset}
-        `;
-        itemFeelTemp.innerHTML = `
-                                Ressenti: ${currentWeather.getFeelTemperature()} °C
-        `;
+        listLocation.className = "current-forecast__list current-forecast__list-location";
+
+        itemCity.innerHTML = `${city}`;
+        itemCity.className = "current-forecast__item current-forecast__item-city";
+        
+        itemCountry.innerHTML = `(${countryCode})`;
+        itemCountry.className = "current-forecast__item current-forecast__item-country";
+        
+        itemFlag.className = "current-forecast__item current-forecast__item-img_flag";
+        flag.src = `${countryFlag}`;
+        flag.alt = `Drapeau du pays (${countryCode})`;
+        flag.title = "Drapeau du pays";
+        flag.className = "current-forecast__img_flag";
+        
+        listDateTime.className = "current-forecast__list current-forecast__list-datetime";
+        itemDate.innerHTML = `Date: ${date}`;
+        itemDate.className = "current-forecast__item current-forecast__item-date";
+        
+        itemTime.innerHTML = `Heure locale: ${time}`;
+        itemTime.className = "current-forecast__item current-forecast__item-time";
+        
+        listSkyInfos.className = "current-forecast__list current-forecast__list-skyinfos";
+        itemTemp.innerHTML = `${currentWeather.getTemperature()} °C`;
+        itemTemp.className = "current-forecast__item current-forecast__item-temp";
+        
+        itemImg.className = "current-forecast__item current-forecast__item-img_icon";
+        img.src = `http://openweathermap.org/img/wn/${currentWeather.getWeatherIcon()}@2x.png`;
+        img.alt = `${currentWeather.getDescription()}`;
+        img.className = "current-forecast__img_icon";
+        
+        itemDescr.innerHTML = `${currentWeather.getDescription()}`;
+        itemDescr.className = "current-forecast__item current-forecast__item-descr";
+        
+        listOthers.className = "current-forecast__list current-forecast__list-others";
+        itemHumidity.innerHTML = `Humidité: ${currentWeather.getHumidity()}%`;
+        itemHumidity.className = "current-forecast__item current-forecast__item-humidity";
+        
+        itemWind.innerHTML = `Vent: ${currentWeather.getWindSpeed()} km/h`;
+        itemWind.className = "current-forecast__item current-forecast__item-wind";
+        
+        itemSunrise.innerHTML = `Lever: ${sunrise}`;
+        itemSunrise.className = "current-forecast__item current-forecast__item-sunrise";
+        
+        itemSunset.innerHTML = `Coucher: ${sunset}`;
+        itemSunset.className = "current-forecast__item current-forecast__item-sunset";
+        
+        itemFeelTemp.innerHTML = `Ressenti: ${currentWeather.getFeelTemperature()} °C`;
+        itemFeelTemp.className = "current-forecast__item current-forecast__item-feelTemp";
 
     section.append(listLocation);
     listLocation.append(itemCity);
@@ -104,7 +107,7 @@ class DisplayCurrentForecast {
     }
     displayError(error) {
         const domElements          = new DomElements();
-        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        const spanErrorMessage     = domElements.getBySelector("#errorMessage");
         spanErrorMessage.innerText = error;
     }
 }

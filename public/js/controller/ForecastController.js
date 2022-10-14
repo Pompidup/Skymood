@@ -14,12 +14,13 @@ class Forecast {
         const displayForecast = new DisplayCurrentForecast();
         const flagPath        = new CreatePathForFlag();
         
-        const latitude        = domElements.getDataAttributeLatitude();
-        const longitude       = domElements.getDataAttributeLongitude();
-        const city            = domElements.getDataAttributeCity();
-        const countryCode     = domElements.getDataAttributeCountryCode();
-        const countryFlag     = flagPath.createPath([countryCode]);
-        const response        = await api.getCurrentWeatherForecastByCity(latitude, longitude);
+        const citySelectionButton = domElements.getBySelector(".city-selection__button");
+        const latitude            = domElements.getDataAttribute(citySelectionButton, "latitude");
+        const longitude           = domElements.getDataAttribute(citySelectionButton, "longitude");
+        const city                = domElements.getDataAttribute(citySelectionButton, "city");
+        const countryCode         = domElements.getDataAttribute(citySelectionButton, "cntycode").toUpperCase();
+        const countryFlag         = flagPath.createPath([countryCode]);
+        const response            = await api.getCurrentWeatherForecastByCity(latitude, longitude);
 
         if(response.success) {
             const currentWeather = new CurrentWeather(response.datas);
@@ -33,9 +34,10 @@ class Forecast {
         const domElements     = new DomElements();
         const displayForecast = new DisplayPeriodicalForecast();
 
-        const latitude        = domElements.getDataAttributeLatitude();
-        const longitude       = domElements.getDataAttributeLongitude();
-        const response        = await api.getPeriodicalWeatherForecastByCity(latitude, longitude);
+        const citySelectionButton = domElements.getBySelector(".city-selection__button");
+        const latitude            = domElements.getDataAttribute(citySelectionButton, "latitude");
+        const longitude           = domElements.getDataAttribute(citySelectionButton, "longitude");
+        const response            = await api.getPeriodicalWeatherForecastByCity(latitude, longitude);
         
         if(response.success) {
             let arrayPeriodicalWeather = [];

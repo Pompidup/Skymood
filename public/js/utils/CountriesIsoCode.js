@@ -1,4 +1,5 @@
 const countriesIsoCode = {
+    
     AF : 'Afghanistan',
     AX : 'Aland-Islands',
     AL : 'Albania',
@@ -184,7 +185,7 @@ const countriesIsoCode = {
     RU : 'Russian-Federation',
     RW : 'Rwanda',
     BL : 'Saint-Barthelemy',
-    SH : 'Saint-Helena',
+    SH : 'Saint-Helena-Islands',
     KN : 'Saint-Kitts-And-Nevis',
     LC : 'Saint-Lucia',
     MF : 'Saint-Martin-French',
@@ -242,7 +243,7 @@ const countriesIsoCode = {
     VE : 'Venezuela',
     VN : 'Vietnam',
     VG : 'Virgin-Islands-British',
-    VI : 'Virgin-Islands-U.S.',
+    VI : 'Virgin-Islands-US',
     WF : 'Wallis-And-Futuna',
     EH : 'Western-Sahara',
     YE : 'Yemen',

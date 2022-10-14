@@ -1,35 +1,3 @@
-// import DomElements      from "../other/DomElements.js";
-// import countriesIsoCode from "../utils/CountriesIsoCode.js";
-
-// class CreatePathForFlag {
-    
-//     getAllIsoCountries() {
-//         return countriesIsoCode;
-//     }
-//     getCountriesFullnameByIso(iso) {
-//         const isoCountries = this.getAllIsoCountries();
-//         const fullname = isoCountries[iso];
-
-//         return fullname;
-//     }
-//     getSelectedCountry() {
-//         const domElements = new DomElements();
-//         const iso         = domElements.getDataAttributeCountryCode();
-
-//         return iso;
-//     }
-//     createPath() {
-//         const iso         = this.getSelectedCountry();
-//         const basePath    = '../public/img/flag/';
-//         const countryName = this.getCountriesFullnameByIso(iso);
-//         const extension   = '.svg';
-
-//         return basePath + countryName + extension;
-//     }
-// }
-
-// export default CreatePathForFlag;
-
 import countriesIsoCode from "../utils/CountriesIsoCode.js";
 
 class CreatePathForFlag {
@@ -67,6 +35,33 @@ class CreatePathForFlag {
 
         return path;
     }
+    getAllPaths() {
+        const paths = [];
+        Object.keys(this.#countriesIsoCode).forEach( (key) => {
+        paths.push(`${this.#basePath}${this.#countriesIsoCode[key]}${this.#extension}`);
+        });
+        return paths;
+    }
 }
 
 export default CreatePathForFlag;
+
+// import CreatePathForFlag from "../other/CreatePathForFlag.js";
+//test de tout les drapeaux en même temps
+// class Test {
+// test() {
+//     const flag = new CreatePathForFlag();
+//     const getFlag = flag.getAllPaths();
+//     const div = document.querySelector("#test");
+
+//     for(let i = 0; i < getFlag.length; i++) {
+//         const img = document.createElement("img");
+//         img.src = `${getFlag[i]}`;
+//         img.title = `Drapeau du pays`;
+//         img.className = "imgtest";
+//         img.style.width = "24px";
+//         div.append(img);
+//     };
+// }}
+
+// export default Test;

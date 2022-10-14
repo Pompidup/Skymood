@@ -7,8 +7,8 @@ class DisplayCityGeoCoordinate {
     displayGeoCoordinate(arrayGeoCoordinate, countryFlag) {
         console.log(arrayGeoCoordinate);
         const domElements      = new DomElements();
-        const errorMessage     = domElements.getSpanForErrorMessage();
-        const target           = domElements.getSectionForCitySelection();
+        const errorMessage     = domElements.getBySelector("#errorMessage");
+        const target           = domElements.getBySelector('#citySelection');
         errorMessage.innerText = "";
         target.innerHTML       = "";
 
@@ -18,40 +18,32 @@ class DisplayCityGeoCoordinate {
             }
         
         const list     = document.createElement('ul');
-        list.className = "city-selection__inner";
+        list.className = "city-selection__list";
         target.append(list);
 
         for( let i = 0; i < arrayGeoCoordinate.length; i++ ) {
             const geoCoordinate  = arrayGeoCoordinate[i];
             const listItemsEvent = new SetCoordinateToButton();
             const listItems      = document.createElement("li");
-            const listFlag       = document.createElement('li');
             const flag           = document.createElement('img');
-            listItems.innerHTML  = `
-                                ${geoCoordinate.getFormattedAddress()}
-                            `;
-            listItemsEvent.className = "city-selection__items";
             
-            listFlag.className = "city-selection__items";
+            listItems.innerHTML  = `${geoCoordinate.getFormattedAddress()}`;
+            listItemsEvent.className = "city-selection__item";
             
-            flag.src = `
-                        ${countryFlag[i]}
-            `;
-            flag.alt = `
-                        Drapeau du pays
-            `;
+            flag.src   = `${countryFlag[i]}`;
+            flag.alt   = "Drapeau du pays";
+            flag.title = "Drapeau du pays";
             flag.className = "city-selection__img";
 
             listItems.dataset.latitude  = geoCoordinate.getLatitude();
             listItems.dataset.longitude = geoCoordinate.getLongitude();
             listItems.dataset.city      = geoCoordinate.getLocation();
             listItems.dataset.cntycode  = geoCoordinate.getCountryCode();
-            listItems.className         = "city-selection__items";
+            listItems.className         = "city-selection__item";
             listItems.addEventListener("click", listItemsEvent.setCityCoordinateToButton);
             
             list.append(listItems);
-            listFlag.append(flag);
-            list.append(listFlag);
+            listItems.append(flag);
         }
         const button      = document.createElement("button");
         const buttonEvent = new SendCoordinate();
@@ -63,8 +55,8 @@ class DisplayCityGeoCoordinate {
     }
     displayError(error) {
         const domElements          = new DomElements();
-        const section              = domElements.getSectionForCitySelection()
-        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        const section              = domElements.getBySelector('#citySelection')
+        const spanErrorMessage     = domElements.getBySelector("#errorMessage");
         section.innerHTML          = "";
         spanErrorMessage.innerText = error;
     }

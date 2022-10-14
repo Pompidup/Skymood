@@ -1,0 +1,4 @@
+.city-selection__img, .current-forecast__img_flag {
+    width: 24px;
+    height: auto;
+}
