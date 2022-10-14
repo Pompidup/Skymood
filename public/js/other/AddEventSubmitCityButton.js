@@ -6,8 +6,8 @@ class AddEventSubmitCityButton {
     addEventOnClick() {
         const domElements   = new DomElements();
         const geoCoordinate = new GeoCoordinate();
-        const button        = domElements.getSubmitCityButton();
-        const input         = domElements.getCityInput();
+        const button        = domElements.getBySelector('#confirmCity');
+        const input         = domElements.getBySelector('#city');
         button.addEventListener("click", () => {
             geoCoordinate.getGeoCoordinateForCity();
         });

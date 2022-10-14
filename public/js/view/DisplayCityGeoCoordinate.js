@@ -6,8 +6,8 @@ class DisplayCityGeoCoordinate {
 
     displayGeoCoordinate(arrayGeoCoordinate) {
         const domElements      = new DomElements();
-        const errorMessage     = domElements.getSpanForErrorMessage();
-        const target           = domElements.getSectionForCitySelection();
+        const errorMessage     = domElements.getBySelector("#errorMessage");
+        const target           = domElements.getBySelector('#citySelection');
         errorMessage.innerText = "";
         target.innerHTML       = "";
 
@@ -45,8 +45,8 @@ class DisplayCityGeoCoordinate {
     }
     displayError(error) {
         const domElements          = new DomElements();
-        const section              = domElements.getSectionForCitySelection()
-        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        const section              = domElements.getBySelector('#citySelection')
+        const spanErrorMessage     = domElements.getBySelector("#errorMessage");
         section.innerHTML = "";
         spanErrorMessage.innerText = error;
     }

@@ -8,7 +8,7 @@ class SetCoordinateToButton {
         const longitude          = event.target.dataset.longitude;
         const city               = event.target.dataset.city;
         const countryCode        = event.target.dataset.cntycode;
-        const button             = domElements.getSendCoordinateButton();
+        const button             = domElements.getBySelector(".city-selection__button");
         button.dataset.latitude  = latitude;
         button.dataset.longitude = longitude;
         button.dataset.city      = city;

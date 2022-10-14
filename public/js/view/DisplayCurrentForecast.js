@@ -10,10 +10,10 @@ class DisplayCurrentForecast {
         const time        = new DatetimeConverter(currentWeather.getCurrentTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
         const sunrise     = new DatetimeConverter(currentWeather.getSunriseTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
         const sunset      = new DatetimeConverter(currentWeather.getSunsetTimestamp(), currentWeather.getTimezone() ).toLocaleTime();
-        const geoCoordTarget     = domElements.getSectionForCitySelection();
+        const geoCoordTarget     = domElements.getBySelector('#citySelection');
         geoCoordTarget.innerHTML = "";
 
-        const section       = domElements.getSectionForCurrentForecast();
+        const section       = domElements.getBySelector("#currentForecast");
         const listLocation  = document.createElement('ul');
         const itemCity      = document.createElement('li');
         const itemCountry   = document.createElement('li');
@@ -102,7 +102,7 @@ class DisplayCurrentForecast {
     }
     displayError(error) {
         const domElements          = new DomElements();
-        const spanErrorMessage     = domElements.getSpanForErrorMessage();
+        const spanErrorMessage     = domElements.getBySelector("#errorMessage");
         spanErrorMessage.innerText = error;
     }
 }
