@@ -132,7 +132,7 @@
 //     LT:			"LITUANIE",
 //     LU:			"LUXEMBOURG",
 //     MO:			"MACAO",
-//     MK:			"RÉPUBLIQUE DE MACÉDOINE",
+//     MK:			"MACÉDOINE, RÉPUBLIQUE DE",
 //     MG:			"MADAGASCAR",
 //     MY:			"MALAISIE",
 //     MW:			"MALAWI",

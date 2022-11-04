@@ -1,4 +1,169 @@
-.city-selection__img, .current-forecast__img_flag {
-    width: 24px;
-    height: auto;
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
 }
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+ul {
+  list-style: none;
+}
+button, input, select {
+  margin: 0;
+}
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+iframe {
+  border: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td, th {
+  padding: 0;
+}
+
+/* :root {
+    --blue-linear: linear-gradient(180deg, #A100FFFF 0%, #71C4FFFF 100%);
+    --orange-linear: linear-gradient(180deg, rgba(224,32,0,1) 0%, rgba(245,94,1,1) 30%, rgba(255,204,0,1) 100%);
+    } */
+    :root {
+        --main-font-family: 'Poppins', sans-serif;
+        --main-font-size: 16px;
+    }
+    body {
+        /* height: 100vh; */
+        font-family: var(--main-font-family);
+        font-size: var(--main-font-size);
+        background: rgba(0, 0, 0, 0.7);
+        background-image: url("../img/background/sunny.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: black;
+    }
+    .header {
+        background-color: rgba(0, 0, 0, 0.9);
+        text-align: center;
+    }
+    .header__title {
+      font-size: 0.9em;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      background: linear-gradient(to right,#F9D976,#F39F86);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    /*** recherche de la ville ***/
+    .city-form {
+      width: 95%;
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 10px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 5px;
+    }
+    .city-form__label {
+      background: linear-gradient(to right,#F9D976,#F39F86);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      font-weight: bold;
+    }
+    .city-form__input {
+      width: 70%;
+      margin: 10px;
+      padding: 5px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid #F39F86;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+    }
+    .city-form__button {
+      cursor: pointer;
+      border-radius: 30%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid #F39F86;
+    }
+    .city-form__button:active {
+      transform: translateY(1px);
+    }
+    .city-form__button:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    .city-form__button-icon {
+      filter: invert(71%) sepia(6%) saturate(3042%) hue-rotate(324deg) brightness(99%) contrast(92%);
+
+    }
+    /*** choix d'une ville ***/
+    .city-selection {
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: 1s;
+        border-radius: 5px;
+        width: 80%;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .city-selection__list {
+        margin: auto 2px;
+    }
+    .city-selection__item {
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+        width: 80%;
+        margin: auto;
+    }
+    .city-selection__item:hover {
+        background-color: #E0E2DB;
+        color: black;
+        transition: 1s;
+    }
+    .city-selection__img, .current-forecast__img_flag {
+        width: 24px;
+        height: auto;
+    }
+    .current-forecast {
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 5px;
+        color: white;
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+    }
+    .periodical-forecast {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 14px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+    }
+    .periodical-forecast__list {
+        padding: 10px;
+        margin: auto;
+        min-width: 15%;
+    }
+/*# sourceMappingURL=style.css.map */

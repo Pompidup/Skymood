@@ -7,7 +7,7 @@ class CreatePathForFlag {
     
     constructor() {
         this.#countriesIsoCode = countriesIsoCode;
-        this.#basePath         = '../public/img/flag/';
+        this.#basePath         = 'public/img/flag/';
         this.#extension        = '.svg';
     }
     

@@ -7,7 +7,7 @@ class DisplayPeriodicalForecast {
         const domElements = new DomElements();
         const section     = domElements.getBySelector("#periodicalForecast");
         // const title       = document.createElement('h2');
-        // section.innerHTML = "";
+        section.innerHTML = "";
         // title.innerText   = "Prochaines heures";
         // section.prepend(title);
         
@@ -15,33 +15,35 @@ class DisplayPeriodicalForecast {
             const periodicalWeather = arrayPeriodicalWeather[i];
             const time     = new DatetimeConverter(periodicalWeather.getAllTimestamp(), periodicalWeather.getTimezone() ).toLocaleTime();
             const list     = document.createElement('ul');
-            const listTime = document.createElement('li');
-            const listImg  = document.createElement('li');
-            const listTemp = document.createElement('li');
-            const listWind = document.createElement('li');
+            const itemTime = document.createElement('li');
+            const itemImg  = document.createElement('li');
+            const itemTemp = document.createElement('li');
+            const itemWind = document.createElement('li');
             const img      = document.createElement('img');
             
-            listTime.innerHTML = `
-                                    ${time}
-                                `;
+            list.className = "periodical-forecast__list";
+
+            itemTime.innerHTML = `${time}`;
+            itemTime.className = "periodical-forecast__item periodical-forecast__item-time";
+            
+            itemImg.className = "periodical-forecast__item periodical-forecast__item-img";
             img.src = `
                         http://openweathermap.org/img/wn/${periodicalWeather.getWeatherIcons()}.png
                     `;
-            img.alt = `
-                        ${periodicalWeather.getDescriptions()}
-                    `;
-            listTemp.innerHTML = `
-                                    ${periodicalWeather.getTemperatures()} °C
-                                `;
-            listWind.innerHTML = `
-                                    ${periodicalWeather.getWindSpeed()} km/h
-                                `;
+            img.alt = `${periodicalWeather.getDescriptions()}`;
+            img.className = "periodical-forecast__img";
+            
+            itemTemp.innerHTML = `${periodicalWeather.getTemperatures()} °C`;
+            itemTemp.className = "periodical-forecast__item periodical-forecast__item-temp";
+            itemWind.innerHTML = `${periodicalWeather.getWindSpeed()} km/h`;
+            itemWind.className = "periodical-forecast__item periodical-forecast__item-wind";
+            
             section.append(list);
-            list.append(listTime);
-            listImg.append(img);
-            list.append(listImg);
-            list.append(listTemp);
-            list.append(listWind);
+            list.append(itemTime);
+            itemImg.append(img);
+            list.append(itemImg);
+            list.append(itemTemp);
+            list.append(itemWind);
         }
     }
     displayError(error) {

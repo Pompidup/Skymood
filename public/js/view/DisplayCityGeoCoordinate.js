@@ -5,7 +5,6 @@ import SendCoordinate        from '../other/SendCoordinateToForecast.js';
 class DisplayCityGeoCoordinate {
 
     displayGeoCoordinate(arrayGeoCoordinate, countryFlag) {
-        console.log(arrayGeoCoordinate);
         const domElements      = new DomElements();
         const errorMessage     = domElements.getBySelector("#errorMessage");
         const target           = domElements.getBySelector('#citySelection');

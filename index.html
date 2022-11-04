@@ -3,70 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name = "description" content = "Les conditions météorologiques actuelle dans la ville de votre choix">
     <title>
         Skymood - Consultez la météo du jour de nombreuses villes
     </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
     <link rel="stylesheet" href="public/css/style.css" />
 </head>
 <body>
-        <h1>Bienvenu !</h1>
-        <section>
-            <label for = "city">Rechercher une ville</label>
-            <input name = "city" 
-                    type= "text"
-                    id = "city"
-                    placeholder = "Exemple: Paris"
-            />
-            <button name = "confirm" id = "confirmCity" type = "submit">
-                Rechercher
-            </button>
+    <header class="header">
+        <h1 class="header__title">
+            Prévisions météo de la journée par ville
+        </h1>
+    </header>
+    
+    <section class="city-form">
+        <label class="city-form__label" for = "city">Rechercher une ville</label>
+        <input name = "city" 
+                type= "text"
+                id = "city"
+                class="city-form__input"
+        />
+        <button name = "confirm"
+                id = "confirmCity" 
+                type = "submit"
+                class="city-form__button"
+                >
+            <img class="city-form__button-icon"
+                src="public/img/icon/search.svg" 
+                alt="Rechercher"/>
+        </button>
             
-            <div class="error-message">
-                <span id = "errorMessage">
+        <span id = "errorMessage"></span>
+    </section>
 
-                </span>
-            </div>
-        </section>
+    <section id="citySelection"
+            class="city-selection"    
+    >
+    </section>
 
-        <section id="citySelection"
-                class="city-selection"    
-        >
+    <section id="currentForecast"
+            class="current-forecast">
+    </section>
 
-        </section>
-
-        <section id="currentForecast"
-                class="current-forecast">
-
-        </section>
-
-        <section id="periodicalForecast"
-                class="periodical-forecast">
-            
-        </section>
-    <!-- <section>
-            <h1>Ville (PAYS)</h1>
-            <div>
-                <ul>
-                    <li>Mer. 32 sept.</li>
-                    <li>Heure locale: 25:56</li>
-                </ul>
-            </div>
-                <p>
-                    25 °C
-                </p>
-            <div>
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" 
-                alt="">
-            </div>
-            <p>
-                Ensoleillé
-            </p>
-            <p>
-                Blablabla
-            </p>
-    </section> -->
+    <section id="periodicalForecast"
+            class="periodical-forecast">    
+    </section>
 
     <script type = "module" src = "public/js/script.js"></script>
 </body>
