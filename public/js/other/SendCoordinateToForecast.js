@@ -1,4 +1,4 @@
-import Forecast from '../controller/ForecastController.js';
+import Forecast    from '../controller/ForecastController.js';
 
 class SendCoordinate {
 

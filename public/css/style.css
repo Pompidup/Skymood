@@ -78,7 +78,7 @@ body {
   font-family: var(--main-font-family);
   font-size: var(--main-font-size);
   background: rgba(0, 0, 0, 0.7);
-  background-image: url("../img/background/snowy.jpg");
+  background-image: url("../img/background/night.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -187,8 +187,7 @@ body {
   padding: 5px;
   font-weight: 500;
 }
-.city-selection__item:hover,
-.city-selection__item-selected {
+.city-selection__item:hover {
   background: var(--primary-linear-gradient);
   color: black;
   font-weight: 500;
@@ -197,29 +196,6 @@ body {
 .current-forecast__img_flag {
   width: 24px;
   height: auto;
-}
-.city-selection__button {
-  display: block;
-  width: 20%;
-  max-width: 100px;
-  margin: auto;
-  padding: 5px;
-  text-align: center;
-  border-radius: 10px;
-  border: 2px solid var(--primary-color);
-  font-weight: bold;
-  background: linear-gradient(to right, #f9d976, #f39f86);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-.city-selection__button:hover {
-  border: 2px solid black;
-  background: var(--primary-linear-gradient);
-  -webkit-text-fill-color: black;
-}
-.city-selection__button-hidden {
-  display: none;
 }
 /*** affichage météo actuelle ***/
 .current-forecast {

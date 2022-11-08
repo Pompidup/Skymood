@@ -1,5 +1,4 @@
 import DomElements           from "../other/DomElements.js";
-import SetCoordinateToButton from '../other/SetCoordinateToButton.js';
 import SendCoordinate        from '../other/SendCoordinateToForecast.js';
 
 class DisplayCityGeoCoordinate {
@@ -26,7 +25,7 @@ class DisplayCityGeoCoordinate {
 
         for( let i = 0; i < arrayGeoCoordinate.length; i++ ) {
             const geoCoordinate  = arrayGeoCoordinate[i];
-            const listItemsEvent = new SetCoordinateToButton();
+            const listItemsEvent = new SendCoordinate();
             const listItems      = document.createElement("li");
             const flag           = document.createElement('img');
             
@@ -43,17 +42,11 @@ class DisplayCityGeoCoordinate {
             listItems.dataset.city      = geoCoordinate.getLocation();
             listItems.dataset.cntycode  = geoCoordinate.getCountryCode();
             listItems.className         = "city-selection__item";
-            listItems.addEventListener("click", listItemsEvent.setCityCoordinateToButton);
+            listItems.addEventListener("click", listItemsEvent.sendCoordinateToForecast);
 
             list.append(listItems);
             listItems.append(flag);
         }
-        const button      = document.createElement("button");
-        const buttonEvent = new SendCoordinate();
-        button.innerText  = "Valider";
-        button.className += "city-selection__button city-selection__button-hidden";
-        button.addEventListener("click", buttonEvent.sendCoordinateToForecast);
-        target.append(button);
     }
     displayError(error) {
         const domElements          = new DomElements();

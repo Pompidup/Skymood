@@ -14,11 +14,11 @@ class Forecast {
         const displayForecast = new DisplayCurrentForecast();
         const flagPath        = new CreatePathForFlag();
         
-        const citySelectionButton = domElements.getBySelector(".city-selection__button");
-        const latitude            = domElements.getDataAttribute(citySelectionButton, "latitude");
-        const longitude           = domElements.getDataAttribute(citySelectionButton, "longitude");
-        const city                = domElements.getDataAttribute(citySelectionButton, "city");
-        const countryCode         = domElements.getDataAttribute(citySelectionButton, "cntycode").toUpperCase();
+        const userSelection       = domElements.getBySelector(".city-selection__item");
+        const latitude            = domElements.getDataAttribute(userSelection, "latitude");
+        const longitude           = domElements.getDataAttribute(userSelection, "longitude");
+        const city                = domElements.getDataAttribute(userSelection, "city");
+        const countryCode         = domElements.getDataAttribute(userSelection, "cntycode").toUpperCase();
         const countryFlag         = flagPath.createPath([countryCode]);
         const response            = await api.getCurrentWeatherForecastByCity(latitude, longitude);
         
@@ -34,9 +34,9 @@ class Forecast {
         const domElements     = new DomElements();
         const displayForecast = new DisplayPeriodicalForecast();
 
-        const citySelectionButton = domElements.getBySelector(".city-selection__button");
-        const latitude            = domElements.getDataAttribute(citySelectionButton, "latitude");
-        const longitude           = domElements.getDataAttribute(citySelectionButton, "longitude");
+        const userSelection       = domElements.getBySelector(".city-selection__item");
+        const latitude            = domElements.getDataAttribute(userSelection, "latitude");
+        const longitude           = domElements.getDataAttribute(userSelection, "longitude");
         const response            = await api.getPeriodicalWeatherForecastByCity(latitude, longitude);
         
         if(response.success) {
