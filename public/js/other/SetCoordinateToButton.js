@@ -13,7 +13,7 @@ class SetCoordinateToButton {
         button.dataset.longitude = longitude;
         button.dataset.city      = city;
         button.dataset.cntycode  = countryCode;
-        button.disabled          = false;
+        button.classList.remove("city-selection__button-hidden");
     }
 }
 export default SetCoordinateToButton;

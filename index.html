@@ -22,27 +22,29 @@
     
     <section class="city-form">
         <label class="city-form__label" for = "city">Rechercher une ville</label>
-        <input name = "city" 
-                type= "text"
-                id = "city"
-                class="city-form__input"
-        />
-        <button name = "confirm"
-                id = "confirmCity" 
-                type = "submit"
-                class="city-form__button"
-                >
-            <img class="city-form__button-icon"
-                src="public/img/icon/search.svg" 
-                alt="Rechercher"/>
-        </button>
+        <div class="inline">
+            <input name = "city" 
+                    type= "text"
+                    id = "city"
+                    class="city-form__input"
+                    autocomplete="off"
+            >
+            <button name = "confirm"
+                    id = "confirmCity" 
+                    type = "submit"
+                    class="city-form__button"
+                    >
+                <img class="city-form__button-icon"
+                    src="public/img/icon/search.svg" 
+                    alt="Rechercher">
+            </button>
+        </div>
             
-        <span id = "errorMessage"></span>
-    </section>
-
-    <section id="citySelection"
-            class="city-selection"    
-    >
+        <span id="errorMessage" class="city-form__error-message"></span>
+        
+        <div id="citySelection" 
+            class="city-selection">
+        </div>
     </section>
 
     <section id="currentForecast"

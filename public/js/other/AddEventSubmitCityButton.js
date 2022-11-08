@@ -8,15 +8,17 @@ class AddEventSubmitCityButton {
         const geoCoordinate = new GeoCoordinate();
         const button        = domElements.getBySelector('#confirmCity');
         const input         = domElements.getBySelector('#city');
-        button.addEventListener("click", () => {
-            geoCoordinate.getGeoCoordinateForCity();
-        });
-        input.addEventListener("keypress", function(event) {
-            if(event.key === "Enter") {
+        
+        if(button !== null) {
+            button.addEventListener("click", () => {
                 geoCoordinate.getGeoCoordinateForCity();
-            }
-        });
-
+            });
+            input.addEventListener("keypress", function(event) {
+                if(event.key === "Enter") {
+                    geoCoordinate.getGeoCoordinateForCity();
+                }
+            });
+        }
     }
 };
 

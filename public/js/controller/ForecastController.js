@@ -21,7 +21,7 @@ class Forecast {
         const countryCode         = domElements.getDataAttribute(citySelectionButton, "cntycode").toUpperCase();
         const countryFlag         = flagPath.createPath([countryCode]);
         const response            = await api.getCurrentWeatherForecastByCity(latitude, longitude);
-
+        
         if(response.success) {
             const currentWeather = new CurrentWeather(response.datas);
             displayForecast.displayCurrentForecast(currentWeather, city, countryCode, countryFlag[0]);
