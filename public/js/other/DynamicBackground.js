@@ -7,39 +7,25 @@ class DynamicBackground {
 
     constructor() {
         this.#weatherConditions = WeatherConditions;
-        this.#basePath          = 'public/img/background/';
-        this.#extension        = '.jpg';
+        this.#basePath = 'public/img/background/';
+        this.#extension = '.jpg';
     }
-    getWeatherConditions(weatherIcon) {
-        const allWeatherConditions = this.#weatherConditions;
-        const currentCondition     = Object.keys(allWeatherConditions).find(key => 
-                allWeatherConditions[key].includes(weatherIcon));
-                console.log(currentCondition);
-        
-        return currentCondition;
-    }
-    createBackgroundPath(weatherIcon) {
-        const pictureName = this.getWeatherConditions(weatherIcon);
-        const path = `${this.#basePath}${pictureName}${this.#extension}`;
-        console.log(path);
 
-        return path;
+    getPictureName(weatherIcon) {
+        return Object.keys(this.#weatherConditions).find(
+            key => this.#weatherConditions[key].includes(weatherIcon)
+        );
     }
-    changeBackground() {
 
-//mettre un bg si 404 not found
-        // if(weatherIcon === "01d") {
-        //     body.style.backgroundImage = "url(public/img/background/sunny.jpg)";
-        // }
-        // if( weatherIcon === "01n" ||
-        //     weatherIcon === "02n" ||
-        //     weatherIcon === "03n") {
-            
-        //     document.body.style.backgroundImage = "url(public/img/background/night.jpg)";
-        // }
-        // else {
-        //     document.body.style.backgroundImage = "url(public/img/background/rainy.jpg)";
-        // }
+    createBackgroundPath(pictureName) {
+        return `${this.#basePath}${pictureName}${this.#extension}`;
+    }
+
+    changeBackground(weatherIcon) {
+        const pictureName = this.getPictureName(weatherIcon);
+        const path = this.createBackgroundPath(pictureName);
+
+        document.body.style.backgroundImage = `url(${path})`;
     }
 }
 
