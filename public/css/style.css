@@ -78,7 +78,7 @@ body {
   font-family: var(--main-font-family);
   font-size: var(--main-font-size);
   background: rgba(0, 0, 0, 0.7);
-  background-image: url("../img/background/night.jpg");
+  background-image: url(../img/background/default.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -200,7 +200,7 @@ body {
 /*** affichage météo actuelle ***/
 .current-forecast {
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
   width: 95%;
   max-width: 600px;
@@ -212,7 +212,7 @@ body {
   flex-wrap: wrap;
   font-size: 14px;
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
   font-weight: bold;
   width: 95%;

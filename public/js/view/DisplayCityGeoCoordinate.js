@@ -1,5 +1,6 @@
-import DomElements           from "../other/DomElements.js";
-import SendCoordinate        from '../other/SendCoordinateToForecast.js';
+import DomElements       from "../other/DomElements.js";
+import SendCoordinate    from '../other/SendCoordinateToForecast.js';
+import DynamicBackground from '../other/DynamicBackground.js';
 
 class DisplayCityGeoCoordinate {
 
@@ -26,6 +27,7 @@ class DisplayCityGeoCoordinate {
         for( let i = 0; i < arrayGeoCoordinate.length; i++ ) {
             const geoCoordinate  = arrayGeoCoordinate[i];
             const listItemsEvent = new SendCoordinate();
+            // const dynamicBckgrnd = new DynamicBackground();
             const listItems      = document.createElement("li");
             const flag           = document.createElement('img');
             
@@ -43,6 +45,7 @@ class DisplayCityGeoCoordinate {
             listItems.dataset.cntycode  = geoCoordinate.getCountryCode();
             listItems.className         = "city-selection__item";
             listItems.addEventListener("click", listItemsEvent.sendCoordinateToForecast);
+            // listItems.addEventListener("click", dynamicBckgrnd.createBackgroundPath());
 
             list.append(listItems);
             listItems.append(flag);
