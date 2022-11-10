@@ -27,7 +27,7 @@ class Forecast {
         if(response.success) {
             const currentWeather = new CurrentWeather(response.datas);
             const weatherIcon    = currentWeather.getWeatherIcon();
-            dynamicBckgrnd.getWeatherConditions(weatherIcon);
+            dynamicBckgrnd.changeBackground(weatherIcon);
             displayForecast.displayCurrentForecast(currentWeather, city, countryCode, countryFlag[0]);
         } else {
             displayForecast.displayError(response.error)
